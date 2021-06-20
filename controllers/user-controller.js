@@ -1,5 +1,6 @@
 const User = require('../models/User');
 
+// user handler
 const userController = {
     // get all users
     getAllUsers(req, res) {

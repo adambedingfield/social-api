@@ -1,3 +1,4 @@
+// date formatter that was used in module lesson
 const addDateSuffix = date => {
     let dateStr = date.toString();
 

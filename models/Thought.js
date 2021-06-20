@@ -1,6 +1,8 @@
 const { Schema, model } = require('mongoose');
+// using date format that was used in module lesson
 const dateFormat = require('../utils/dateFormat');
 
+// create reaction Schema for thought schema
 const ReactionSchema = new Schema(
     {
         reactionId: {
@@ -10,12 +12,14 @@ const ReactionSchema = new Schema(
         reactionBody: {
             type: String,
             required: true,
+            // set min/max lengths
             min: 1,
             max: 280
         },
         username: {
             type: String,
             required: true,
+            // references the User model name
             ref: 'User'
         },
         createdAt: {
@@ -31,11 +35,13 @@ const ReactionSchema = new Schema(
     }
 );
 
+// creates schema for new thought
 const ThoughtSchema = new Schema(
     {
         thoughtText: {
             type: String,
             required: true,
+            // set min/max lengths
             min: 1,
             max: 280
         },
@@ -47,8 +53,10 @@ const ThoughtSchema = new Schema(
         username: {
             type: String,
             required: true,
+            // references user model name
             ref: 'User'
         },
+        // fills array with reactions created from users
         reactions: [ReactionSchema]
     },
     {
@@ -66,6 +74,7 @@ ThoughtSchema.virtual('reactionCount').get(function() {
     return this.reactions.reduce((total, reaction) => total + reaction.length +1, 0);
 });
 
+// creates the thought model
 const Thought = model('Thought', ThoughtSchema);
 
 module.exports = Thought;

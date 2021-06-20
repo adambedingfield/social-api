@@ -14,6 +14,7 @@ const UserSchema = new Schema(
             required: true,
             unique: true,
             trim: true,
+            // required to validate input is an email
             match: /.+\@.+\..+/,
         },
         thoughts: [
