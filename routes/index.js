@@ -1,51 +1,12 @@
-const { Schema, model } = require('mongoose');
-const dateFormat = require('../utils/dateFormat');
+const router = require('express').Router();
+const apiRoutes = require('./api');
 
-// screate the schema for creating a user
-const UserSchema = new Schema(
-    {
-        username: {
-            type: String,
-            required: true,
-            unique: true,
-            trim: true
-        },
-        email: {
-            type: String,
-            required: true,
-            unique: true,
-            trim: true,
-            match: /.+\@.+\..+/,
-        },
-        thoughts: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'Thought'
-            }
-        ],
-        friends: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'User'
-            }
-        ]
-    },
-    {
-        toJSON: {
-            virtuals: true,
-            getters: true
-        },
-        id: false
-    }
-);
+// add /api prefix for api directory
+router.use('/api', apiRoutes);
 
-// get total number of users friends
-UserSchema.virtual('friendCount').get(function() {
-    return this.friends.reduce((total, friend) => total + friend.length +1, 0);
+// returns error if server/site not working
+router.use((req, res) => {
+  res.status(404).send('<h1>404 Error!</h1>');
 });
 
-// create user model
-const User = model('User', UserSchema);
-
-// export user model
-module.exports = User;
+module.exports = router;
