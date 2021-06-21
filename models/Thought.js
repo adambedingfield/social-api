@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model, Types } = require('mongoose');
 // using date format that was used in module lesson
 const dateFormat = require('../utils/dateFormat');
 
@@ -71,7 +71,7 @@ const ThoughtSchema = new Schema(
 
 // get total of reactions
 ThoughtSchema.virtual('reactionCount').get(function() {
-    return this.reactions.reduce((total, reaction) => total + reaction.length +1, 0);
+    return this.reactions.length;
 });
 
 // creates the thought model
