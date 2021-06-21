@@ -7,8 +7,8 @@ Social Network API is a simple API designed to be used with social media platfor
 * [Technology](#technology)<br>
 * [Questions](#questions)<br>
 ## Demo<br>
-Below is a link to a youtube video of the API routes being demonstrated in Insomnia.
-[![Link](https://img.youtube.com/vi/https://youtu.be/dayPLVDIo_A/0.jpg)](https://www.youtube.com/watch?v=https://youtu.be/dayPLVDIo_A)<br>
+Below is a link to a youtube video of the API routes being demonstrated in Insomnia.<br>https://youtu.be/dayPLVDIo_A
+[![Link](https://img.youtube.com/vi/dayPLVDIo_A/0.jpg)](https://www.youtube.com/watch?v=dayPLVDIo_A)<br>
 ## Usage<br>
 This API is free for use by the public.
 ## Technology<br>
